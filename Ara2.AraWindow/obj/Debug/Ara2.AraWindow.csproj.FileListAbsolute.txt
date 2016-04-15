@@ -1,0 +1,6 @@
+C:\Tecnomips\Ara.Net2\Ara2.AraWindow\Ara2.AraWindow\bin\Debug\Ara2.AraWindow.dll
+C:\Tecnomips\Ara.Net2\Ara2.AraWindow\Ara2.AraWindow\bin\Debug\Ara2.AraWindow.pdb
+C:\Tecnomips\Ara.Net2\Ara2.AraWindow\Ara2.AraWindow\bin\Debug\Ara2.dll
+C:\Tecnomips\Ara.Net2\Ara2.AraWindow\Ara2.AraWindow\obj\Debug\Ara2.AraWindow.csprojResolveAssemblyReference.cache
+C:\Tecnomips\Ara.Net2\Ara2.AraWindow\Ara2.AraWindow\obj\Debug\Ara2.AraWindow.dll
+C:\Tecnomips\Ara.Net2\Ara2.AraWindow\Ara2.AraWindow\obj\Debug\Ara2.AraWindow.pdb
