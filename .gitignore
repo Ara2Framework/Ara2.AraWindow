@@ -3,3 +3,10 @@
 ################################################################################
 
 *.suo
+/.vs
+
+
+/Ara2.AraWindow/Nuget/Ara2.AraWindow.*.nupkg
+/Ara2.AraWindow/Ara2.AraWindow.csproj.user
+/Ara2.AraWindow/bin
+/Ara2.AraWindow/obj

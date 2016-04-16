@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ara2, Version=1.2.5946.20635, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ara2.1.2.5946.20635\lib\net40\Ara2.dll</HintPath>
+    <Reference Include="Ara2, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ara2.1.2.6.0\lib\net40\Ara2.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -46,18 +46,42 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ara2ComponentsServer\Components\AraWindow.cs" />
+    <Compile Include="Ara2ComponentsServer\Components\AraWindowTaskbar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Ara2\Components\AraWindow\CREDITS.md" />
-    <None Include="Ara2\Components\AraWindow\LICENSE.md" />
+    <Content Include="Ara2\Components\AraWindowTaskBar\CREDITS.md" />
+    <Content Include="Ara2\Components\AraWindowTaskBar\LICENSE.md" />
+    <Content Include="Ara2\Components\AraWindow\CREDITS.md" />
+    <Content Include="Ara2\Components\AraWindow\LICENSE.md" />
+    <None Include="Nuget\Ara2.AraWindow.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Ara2\Components\AraWindowTaskBar\AraWindowTaskbar.js" />
     <Content Include="Ara2\Components\AraWindow\AraWindow.js" />
     <Content Include="Ara2\Components\AraWindow\AraWindows.js" />
+    <Content Include="AraComponentBase\AraScrollBar\Files\AraScrollBar.js" />
+    <Content Include="Nuget\NuGet.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="PostBuildMacros">
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="Targets" />
+    </GetAssemblyIdentity>
+    <ItemGroup>
+      <VersionNumber Include="@(Targets->'%(Version)')" />
+    </ItemGroup>
+  </Target>
+  <PropertyGroup>
+    <PostBuildEventDependsOn>
+    $(PostBuildEventDependsOn);
+    PostBuildMacros;
+  </PostBuildEventDependsOn>
+    <PostBuildEvent>cd $(ProjectDir)Nuget
+del *.nupkg
+nuget.exe pack $(ProjectName).nuspec -version @(VersionNumber)</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
